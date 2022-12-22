@@ -1,0 +1,49 @@
+﻿<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    @{
+        var emp = ViewData["Employee"] as DemoMVCCore.Model.EmployeeClass;
+        // loosely bound data, no intellisense
+
+    }
+    <h1>Fetch from Views/Home</h1>
+    <h3>@ViewData["PageTitle"]</h3>
+    @{
+        string phpath = "~/images/" + (emp.PhotoPath ?? "noimage.jpg");
+    }
+    <div class="row justify-content-center m-3">
+        <div class="col-sm-8">
+            <div class="card">
+                <div class="card-header">
+                    <h1>@emp.Name</h1>
+                </div>
+                <div class="card-body text-center">
+                    <img class="card-img-top" src="@phpath" asp-append-version="true" />
+                    <h4>
+                        ID:  @emp.Id
+                    </h4>
+                    <h4>
+                        E-mail: @emp.Email
+                    </h4>
+                    <h4>
+                        Department: @emp.Dept
+                    </h4>
+                </div>
+                @{int nxtid = emp.Id; nxtid++; }
+                <div class="card-footer text-center">
+
+                    <!--<a href="/Home/GetAll" class="btn btn-primary">Back</a>
+                    -->
+                    <a asp-controller="Home" asp-action="List" class="btn btn-primary m-1">Back</a>
+                    <a href="/Home/Fetch/@nxtid" class="btn btn-secondary m-1">Next</a>
+                    <a asp-controller="Home" asp-action="Update" asp-route-id="@emp.Id" class="btn btn-primary m-1">Edit</a>
+                    <a href="/Home/Delete/@emp.Id" class="btn btn-danger m-1">Delete</a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,23 @@
+﻿@model DemoMVCCore.ViewModels.HomeDetailsViewModel
+
+@{ViewBag.Title = "Details"; }
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+
+    <h1>GetOne from Views/Home</h1>
+    <h3>@Model.PageTitle</h3>
+    <div>
+        Name: @Model.Employee.Name
+    </div>
+    <div>
+        E-mail: @Model.Employee.Email
+    </div>
+    <div>
+        Department: @Model.Employee.Dept
+    </div>
+</body>
+</html>
